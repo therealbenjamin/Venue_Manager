@@ -69,8 +69,9 @@ Acceptance Criteria:
 ##### As a talent buyer: In order to know what is within a specific distance of me, I want to enter my address and a distance and print a list of all venues within that radius.
 
 <pre>
-Usage: ./tours radius "Nashville, TN" 120
+Usage: ./tours radius
 Acceptance Criteria:
+- Prints questions about a user's geographic location (address, city, state, zip)
 - Prints all venues within the specified radius
 </pre>
 
