@@ -1,7 +1,5 @@
 # USER STORIES
 
-----------------------------------------------------------------------
-
 ##### As a venue manager or talent buyer: In order to keep my list of venues up to date, I want to add a new venue to the database.
 
 <pre>
