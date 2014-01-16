@@ -4,8 +4,8 @@ USER STORIES
 
 As a venue manager or talent buyer: In order to keep my list of venues up to date, I want to add a new venue to the database.
 
-- Usage: ./tours add "Ryman Auditorium" [address] [city] [state] [zip]
-- Acceptance Criteria:
+Usage: ./tours add "Ryman Auditorium" [address] [city] [state] [zip]
+Acceptance Criteria:
 - Adds a venue to the database that can then be updated using the update command
 
 
