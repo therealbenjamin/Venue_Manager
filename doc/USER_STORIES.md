@@ -1,9 +1,18 @@
 # USER STORIES
 
+##### As a venue manager or talent buyer: In order to view a venue, I want to enter the name of said venue and print the venue's details.
+
+<pre>
+Usage: ./tours view "Ryman Auditorium"
+Acceptance Criteria:
+- Asks for the name of a venue
+- Prints prints the details of the venue from the database
+</pre>
+
 ##### As a venue manager or talent buyer: In order to keep my list of venues up to date, I want to add a new venue to the database.
 
 <pre>
-Usage: ./tours add "Ryman Auditorium" 
+Usage: ./tours add "Ryman Auditorium"
 Acceptance Criteria:
 - Asks for the name of a venue
 - Prints out a series of questions about the venue
@@ -16,7 +25,7 @@ Acceptance Criteria:
 <pre>
 Usage: ./tours kill "Ryman Auditorium"
 Acceptance Criteria:
-- Prints the venue name and details 
+- Prints the venue name and details
 - Asks the user for confirmation that the venue should be removed
 - Upon confirmation, deletes the record from the database
 </pre>
@@ -24,7 +33,7 @@ Acceptance Criteria:
 ##### As a venue manager or talent buyer: In order to keep my list of venues up to date, I want to be able to update an existing venue in the database.
 
 <pre>
-Usage: ./tours update "Ryman Auditorium" 
+Usage: ./tours update "Ryman Auditorium"
 Acceptance Criteria:
 - Prints the current details about the venue
 - Prints a question for each detail to be modified
@@ -39,7 +48,7 @@ Usage: ./tours new "Ryman Auditorium"
 Acceptance Criteria:
 - Prints questions about the show
 - User enters data regarding the artist, date, and show time
-- Prints a list of shows for the venue to which a date has been added 
+- Prints a list of shows for the venue to which a date has been added
 </pre>
 
 ##### As a venue manager or talent buyer: In order to keep track of what is going on at one of my venues, I want to print a list of shows booked at a given venue.
