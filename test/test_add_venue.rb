@@ -1,7 +1,12 @@
 require 'minitest/autorun'
-require_relative 'helper'
+require_relative './helper'
+require_relative '../lib/colors'
 
 class TestAddVenue < MiniTest::Unit::TestCase
+
+	def test_view_venue_details
+		assert false, "Missing test implementation"
+	end
 
 	def test_valid_venue_gets_saved
 		assert false, "Missing test implementation"
@@ -13,7 +18,7 @@ class TestAddVenue < MiniTest::Unit::TestCase
 
 	def test_error_msg_for_missing_name
 		actual =  `./tours.rb add`
-		expected = "You must provide a venue name."
+		expected = red("You must provide a venue name.")
 		assert_equal expected, actual
 	end
 
