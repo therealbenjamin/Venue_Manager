@@ -48,7 +48,8 @@ parse = Nokogiri::XML(response.body)
 
 parse.css('venue').each do |venue|
 	db.execute("INSERT INTO venues (name, address, city, state, latitude, longitude)
-		VALUES (?, ?, ?, ?, ?, ?)", [venue.css('name').text,
+		VALUES (?, ?, ?, ?, ?, ?)",
+		[venue.css('name').text,
 		venue.css('address').text,
 		venue.css('city_name').text,
 		venue.css('region_name').text,
@@ -61,7 +62,8 @@ parse = Nokogiri::XML(response.body)
 
 parse.css('venue').each do |venue|
 	db.execute("INSERT INTO venues (name, address, city, state, latitude, longitude)
-		VALUES (?, ?, ?, ?, ?, ?)", [venue.css('name').text,
+		VALUES (?, ?, ?, ?, ?, ?)",
+		[venue.css('name').text,
 		venue.css('address').text,
 		venue.css('city_name').text,
 		venue.css('region_name').text,
@@ -74,7 +76,8 @@ parse = Nokogiri::XML(response.body)
 
 parse.css('venue').each do |venue|
 	db.execute("INSERT INTO venues (name, address, city, state, latitude, longitude)
-		VALUES (?, ?, ?, ?, ?, ?)", [venue.css('name').text,
+		VALUES (?, ?, ?, ?, ?, ?)",
+		[venue.css('name').text,
 		venue.css('address').text,
 		venue.css('city_name').text,
 		venue.css('region_name').text,
@@ -87,7 +90,8 @@ parse = Nokogiri::XML(response.body)
 
 parse.css('venue').each do |venue|
 	db.execute("INSERT INTO venues (name, address, city, state, latitude, longitude)
-		VALUES (?, ?, ?, ?, ?, ?)", [venue.css('name').text,
+		VALUES (?, ?, ?, ?, ?, ?)",
+		[venue.css('name').text,
 		venue.css('address').text,
 		venue.css('city_name').text,
 		venue.css('region_name').text,
@@ -113,7 +117,8 @@ parse = Nokogiri::XML(response.body)
 
 parse.css('venue').each do |venue|
 	db.execute("INSERT INTO venues (name, address, city, state, latitude, longitude)
-		VALUES (?, ?, ?, ?, ?, ?)", [venue.css('name').text,
+		VALUES (?, ?, ?, ?, ?, ?)",
+		[venue.css('name').text,
 		venue.css('address').text,
 		venue.css('city_name').text,
 		venue.css('region_name').text,
@@ -126,7 +131,8 @@ parse = Nokogiri::XML(response.body)
 
 parse.css('venue').each do |venue|
 	db.execute("INSERT INTO venues (name, address, city, state, latitude, longitude)
-		VALUES (?, ?, ?, ?, ?, ?)", [venue.css('name').text,
+		VALUES (?, ?, ?, ?, ?, ?)",
+		[venue.css('name').text,
 		venue.css('address').text,
 		venue.css('city_name').text,
 		venue.css('region_name').text,
@@ -139,7 +145,8 @@ parse = Nokogiri::XML(response.body)
 
 parse.css('venue').each do |venue|
 	db.execute("INSERT INTO venues (name, address, city, state, latitude, longitude)
-		VALUES (?, ?, ?, ?, ?, ?)", [venue.css('name').text,
+		VALUES (?, ?, ?, ?, ?, ?)",
+		[venue.css('name').text,
 		venue.css('address').text,
 		venue.css('city_name').text,
 		venue.css('region_name').text,
