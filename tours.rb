@@ -38,7 +38,6 @@ when "add"
 
 	record = db.db.execute("SELECT * FROM venues WHERE ID = (SELECT MAX(ID) FROM venues)")
 	id = record[0][0] + 1
-	binding.pry
 
 	db.db.execute("INSERT INTO venues (id, name, address, city, state, latitude, longitude)
 		VALUES (?, ?, ?, ?, ?, ?, ?)", [id, name, address, city, state, latitude, longitude])
@@ -52,6 +51,12 @@ when "add"
 	puts red("Latitude: " + coordinates[0].to_s)
 	puts red("Longitude: " + coordinates[1].to_s)
 	puts
+when "kill"
+	puts "Enter the name of the venue you would like to " + red("DELETE:")
+	name = pull_venue_name
+	binding.pry
+	db.db.execute("DELETE FROM venues WHERE venues.name = '#{name}'")
+	puts "#{name} has been successfully removed from the database."
 end
 
 # puts "Enter a random number to get the details of the first random venue!"
