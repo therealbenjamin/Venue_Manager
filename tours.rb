@@ -8,46 +8,50 @@ require 'pry'
 require_relative 'lib/colors'
 require_relative 'lib/db'
 require_relative 'lib/output'
+require_relative 'lib/venue'
 
 db = DB.new
 venues = db.pull_venues
 
 header()
-
-puts "Welcome to" + red(" VENUE MANAGER!")
-puts "Enter one of the following options to continue:"
-puts
-puts "'view' prints a venue's details;"
-puts "'add' creates a new venue;"
-puts "'kill' deletes a venue;"
-puts "'update' updates a venue's details;"
-puts "'new' adds a new show for a venue;"
-puts "'shows_at' displays shows booked at a venue;"
-puts "'distance' displays the distance between two venues;"
-puts "'by_city' displays all shows in a given city;"
-puts "'radius' displays all venues within a specified radius."
-puts
+intro()
 
 argument = gets.chomp
 
 case argument
 when "view"
-	puts "Enter venue name:"
-	name = gets.chomp
+	name = pull_venue_name
 	record = db.get_venue_by_name(name)
-	puts record[0]
+	puts red(record[0][0])
+	puts red(record[0][1])
+	puts red(record[0][2])
+	puts red(record[0][3])
 when "add"
-	puts "Enter new venue name:"
-	name = gets.chomp
-	puts "Enter venue address:"
-	address = gets.chomp
-	puts "Enter venue city:"
-	city = gets.chomp
-	puts "Enter venue state:"
-	state = gets.chomp
-	db.db.execute("INSERT INTO venues (name, address, city, state)
-		VALUES (?, ?, ?, ?)",
-		[name, address, city, state])
+	name = pull_venue_name()
+	address = pull_venue_address()
+	city = pull_venue_city()
+	state = pull_venue_state()
+
+	coordinates = Geocoder.coordinates(address + ", " + city + ", " + state)
+	latitude = coordinates[0]
+	longitude = coordinates[1]
+
+	record = db.db.execute("SELECT * FROM venues WHERE ID = (SELECT MAX(ID) FROM venues)")
+	id = record[0][0] + 1
+	binding.pry
+
+	db.db.execute("INSERT INTO venues (id, name, address, city, state, latitude, longitude)
+		VALUES (?, ?, ?, ?, ?, ?, ?)", [id, name, address, city, state, latitude, longitude])
+
+	puts
+	puts black("The following venue has been added successfully:" + "\n")
+	puts red(name)
+	puts red(address)
+	puts red(city)
+	puts red(state)
+	puts red("Latitude: " + coordinates[0].to_s)
+	puts red("Longitude: " + coordinates[1].to_s)
+	puts
 end
 
 # puts "Enter a random number to get the details of the first random venue!"

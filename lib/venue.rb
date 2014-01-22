@@ -1,13 +1,21 @@
-class Venue
+require_relative './db'
 
-	attr_accessor :name, :address, :city, :state, :postal_code, :latitude, :longitude
+def pull_venue_name
+	puts "Enter venue name:"
+	name = gets.chomp
+end
 
-	def initialize name, address, city, state, postal_code
-		@name = name
-		@address = address
-		@city = city
-		@state = state
-		@postal_code = postal_code
-	end
+def pull_venue_address
+	puts "Enter venue address:"
+	address = gets.chomp
+end
 
+def pull_venue_city
+	puts "Enter venue city:"
+	city = gets.chomp
+end
+
+def pull_venue_state
+	puts "Enter venue state:"
+	state = gets.chomp
 end
