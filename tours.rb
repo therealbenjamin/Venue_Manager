@@ -33,19 +33,8 @@ when "add"
 	venue_added(venue)
 
 when "view"
-	name = pull_venue_name
-	record = db.get_venue_by_name(name)
-	clear()
-	puts
-	puts "Details for this venue are as follows:"
-	puts
-	puts red(record[0][1])
-	puts red(record[0][2])
-	puts red(record[0][3])
-	puts red(record[0][4])
-	puts red(record[0][5])
-	puts red(record[0][6])
-	puts
+	venue = Venue.new(name: name, address: address, city: city, state: state)
+	venue.view(db)
 
 when "update"
 	puts red("UPDATE a venue record:")
@@ -86,10 +75,8 @@ when "kill"
 	puts "Enter the name of the venue you would like to " + red("DELETE:")
 	name = gets.chomp
 	venue = Venue.new(name: name, address: address, city: city, state: state)
-	# db.connection.execute("DELETE FROM venues WHERE venues.name = '#{name}'")
 	venue.kill(db)
 	puts "#{name} has been successfully removed from the database."
-
 when "new"
 	puts "Enter the name of the venue for which you would like to add a " + red("SHOW:")
 	name = pull_venue_name

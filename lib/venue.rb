@@ -16,8 +16,20 @@ class Venue
 		@longitude = options[:longitude]
 	end
 
-	def view
-
+	def view db
+	name = pull_venue_name
+	record = db.get_venue_by_name(name)
+	clear()
+	puts
+	puts "Details for this venue are as follows:"
+	puts
+	puts red(record[0][1])
+	puts red(record[0][2])
+	puts red(record[0][3])
+	puts red(record[0][4])
+	puts red(record[0][5])
+	puts red(record[0][6])
+	puts
 	end
 
 	def geocode
