@@ -88,7 +88,10 @@ class Venue
 	end
 
 	def kill db
+		puts "Enter the name of the venue you would like to " + red("DELETE:")
+		name = gets.chomp
 		db.connection.execute("DELETE FROM venues WHERE name = '#{name}'")
+		puts "#{name} has been successfully removed from the database."
 	end
 
 end
