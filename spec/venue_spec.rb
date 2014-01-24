@@ -1,0 +1,25 @@
+require 'spec_helper'
+require 'venue'
+
+describe Venue do
+	describe '#initialize' do
+		it 'populates attributes' do
+			venue = Venue.new(name: 'Test Venue', address: '123 Main Street', city: 'Anytown', state: 'TN')
+			expect(venue.name).to eq('Test Venue')
+			expect(venue.address).to eq('123 Main Street')
+			expect(venue.city).to eq('Anytown')
+			expect(venue.state).to eq('TN')
+		end
+	end
+	describe '#geocode' do
+		it 'sets latitude and longitude' do
+			Geocoder.stub(coordinates: [12.345, 12.345])
+			venue = Venue.new(name: 'Test Venue', address: '123 Main Street', city: 'Anytown', state: 'TN')
+			venue.geocode
+			expect(venue.latitude).to eq(12.345)
+			expect(venue.longitude).to eq(12.345)
+		end
+	end
+end
+
+

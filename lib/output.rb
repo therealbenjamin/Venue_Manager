@@ -8,25 +8,25 @@ def header
   clear()
   puts cyan("-" * 75)
   puts cyan("|||||" + ("+" * 65) + "|||||")
-  puts cyan(("|||||" + "=" * 26) + "VENUE MANAGER" + ("=" * 26) + "|||||")
+  puts cyan(("|||||" + "=" * 26) + red("VENUE MANAGER") + cyan(("=" * 26) + "|||||"))
   puts cyan("|||||" + ("+" * 65) + "|||||")
   puts cyan("-" * 75)
   puts
 end
 
 def intro
-puts "Welcome to" + red(" VENUE MANAGER!")
-puts "Enter one of the following options to continue:"
+puts "Welcome to".center(65).rstrip + red(" VENUE MANAGER!")
+puts "Enter one of the following options to continue:".center(75)
 puts
-puts "'view' prints a venue's details;"
-puts "'add' creates a new venue;"
-puts "'kill' deletes a venue;"
-puts "'update' updates a venue's details;"
-puts "'new' adds a new show for a venue;"
-puts "'shows_at' displays shows booked at a venue;"
-puts "'distance' displays the distance between two venues;"
-puts "'by_city' displays all shows in a given city;"
-puts "'radius' displays all venues within a specified radius."
+puts "Type 'view' to print a venue's details;".center(55)
+puts "Type 'add' to create a new venue;".center(50)
+puts "Type 'kill' to delete an existing venue;".center(57)
+puts "Type 'update' to revise a venue's details;".center(59)
+puts "Type 'new' to add a new show for a venue;".center(58)
+puts "Type 'shows_at' to display shows booked at a venue;".center(67)
+puts "Type 'distance' to determine the distance between two venues;".center(78)
+puts "Type 'by_city' to print all shows in a given city;".center(67)
+puts "Type 'radius' to display all venues within a specified radius.".center(79)
 puts
 end
 
@@ -48,6 +48,19 @@ end
 def pull_venue_state
 	puts "Enter venue state:"
 	state = gets.chomp
+end
+
+def venue_added venue
+	clear()
+	puts
+	puts black("The following venue has been added successfully:" + "\n")
+	puts red(venue.name)
+	puts red(venue.address)
+	puts red(venue.city)
+	puts red(venue.state)
+	puts red("Latitude: " + venue.latitude.to_s)
+	puts red("Longitude: " + venue.longitude.to_s)
+	puts
 end
 
 
