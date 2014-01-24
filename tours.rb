@@ -9,7 +9,7 @@ require_relative 'lib/colors'
 require_relative 'lib/db'
 require_relative 'lib/output'
 require_relative 'lib/venue'
-require_relative 'lib/shows'
+require_relative 'lib/show'
 
 db = DB.new
 venues = db.pull_venues
@@ -45,18 +45,6 @@ when "kill"
 	venue = Venue.new(name: name, address: address, city: city, state: state)
 	venue.kill(db)
 
-when "new"
-	puts "Enter the name of the venue for which you would like to add a " + red("SHOW:")
-	name = pull_venue_name
-	record = db.get_venue_by_name(name)
-
-	puts "Please enter the name of the artist:"
-	artist = gets.chomp
-	puts "Please enter the show date (YYYY-MM-DD):"
-	date = gets.chomp
-	db.connection.execute("INSERT INTO shows(artist, showdate, venue_id) VALUES('#{artist}', '#{date}', '#{record[0][0]}')")
-	puts "A show for #{artist} has been added for #{record[0][1]} for the following date: #{date}."
-
 when "distance"
 	puts "Enter the names of two venues to get the " + red("DISTANCE") + " between them:"
 	puts cyan("OPTION ONE").center(20)
@@ -71,5 +59,19 @@ when "distance"
 	print black("These venues are ")
 	print red(distance)
 	print black(" miles apart. \n")
+
+when "new"
+
+	puts "Enter the following details if you would like to add a " + red("SHOW.")
+	name = pull_venue_name
+	record = db.get_venue_by_name(name)
+
+	puts "Please enter the name of the artist:"
+	artist = gets.chomp
+	puts "Please enter the show date (YYYY-MM-DD):"
+	showdate = gets.chomp
+
+	show = Show.new(artist: artist, showdate: showdate)
+	show.new_show(db, record)
 
 end
