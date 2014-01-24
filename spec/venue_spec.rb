@@ -20,6 +20,11 @@ describe Venue do
 			expect(venue.longitude).to eq(12.345)
 		end
 	end
+	describe '#full_address' do
+		it 'gets the full address' do
+			venue = Venue.new(name: 'Test Venue', address: '123 Main Street', city: 'Anytown', state: 'TN')
+		end
+	end
 end
 
 

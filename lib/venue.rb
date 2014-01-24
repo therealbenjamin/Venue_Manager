@@ -16,10 +16,18 @@ class Venue
 		@longitude = options[:longitude]
 	end
 
+	def view
+
+	end
+
 	def geocode
 	coordinates = Geocoder.coordinates(full_address)
 	@latitude = coordinates[0]
 	@longitude = coordinates[1]
+	end
+
+	def get_distance db
+
 	end
 
 	def full_address
@@ -31,4 +39,17 @@ class Venue
 		VALUES (?, ?, ?, ?, ?, ?)", [@name, @address, @city, @state, @latitude, @longitude])
 	end
 
+	def update db
+
+	end
+
+	def kill db
+		db.connection.execute("DELETE FROM venues WHERE name = '#{name}'")
+	end
+
 end
+
+
+
+
+

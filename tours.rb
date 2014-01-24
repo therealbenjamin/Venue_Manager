@@ -5,8 +5,6 @@ require 'geocoder'
 require 'sqlite3'
 require 'pry'
 
-
-
 require_relative 'lib/colors'
 require_relative 'lib/db'
 require_relative 'lib/output'
@@ -86,8 +84,10 @@ when "update"
 
 when "kill"
 	puts "Enter the name of the venue you would like to " + red("DELETE:")
-	name = pull_venue_name
-	db.connection.execute("DELETE FROM venues WHERE venues.name = '#{name}'")
+	name = gets.chomp
+	venue = Venue.new(name: name, address: address, city: city, state: state)
+	# db.connection.execute("DELETE FROM venues WHERE venues.name = '#{name}'")
+	venue.kill(db)
 	puts "#{name} has been successfully removed from the database."
 
 when "new"
@@ -118,47 +118,3 @@ when "distance"
 	print black(" miles apart. \n")
 
 end
-
-# puts "Details for venue # 1"
-# puts venues[option1]
-# puts "Details for venue # 2"
-# puts venues[option2]
-
-# distance = Geocoder::Calculations.distance_between([venues[option1][4], venues[option1][5]], [venues[option2][4], venues[option2][5]])
-
-
-
-
-
-# command = ARGV[0]
-# arguments = ARGV.drop(1)
-
-# if arguments.empty?
-# 	print red("You must provide a venue name.")
-# else
-# 	print red("You must provide a venue address.")
-# end
-
-
-
-# command = ARGV[0]
-# arguments = ARGV.drop(1)
-
-# if arguments.empty?
-# 	print "You must provide a venue name."
-# else
-# 	missing_things = []
-# 	unless arguments.index("--address")
-# 		missing_things << "address"
-# 	end
-# 	unless arguments.index("--city")
-# 		missing_things << "city"
-# 	end
-# 	unless arguments.index("--state")
-# 		missing_things << "state"
-# 	end
-# 	unless arguments.index("--address")
-# 		missing_things << "postal code"
-# 	end
-# 	print "You must provide a venue #{missing_things.join(", ")}."
-# end
