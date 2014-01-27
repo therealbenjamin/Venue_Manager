@@ -17,13 +17,9 @@ class Venue
 	end
 
 	def geocode
-	coordinates = Geocoder.coordinates(full_address)
-	@latitude = coordinates[0]
-	@longitude = coordinates[1]
-	end
-
-	def get_distance db
-
+		coordinates = Geocoder.coordinates(full_address)
+		@latitude = coordinates[0]
+		@longitude = coordinates[1]
 	end
 
 	def full_address
@@ -68,6 +64,7 @@ class Venue
 		new_address = pull_venue_address()
 		new_city = pull_venue_city()
 		new_state = pull_venue_state()
+
 		db.connection.execute("UPDATE venues SET name = '#{new_name}'")
 		db.connection.execute("UPDATE venues SET address = '#{new_address}'")
 		db.connection.execute("UPDATE venues SET city = '#{new_city}'")
@@ -76,6 +73,8 @@ class Venue
 		coordinates = Geocoder.coordinates(new_address + ", " + new_city + ", " + new_state)
 		new_latitude = coordinates[0]
 		new_longitude = coordinates[1]
+
+		db.connection.execute("UPDATE venues SET latitude = '#{new_latitude}', longitude = '#{new_longitude}'")
 
 		puts "Details have been successfully updated to:"
 		new_record = db.get_venue_by_name(new_name)
@@ -92,6 +91,10 @@ class Venue
 		name = gets.chomp
 		db.connection.execute("DELETE FROM venues WHERE name = '#{name}'")
 		puts "#{name} has been successfully removed from the database."
+	end
+
+	def get_distance db
+
 	end
 
 end

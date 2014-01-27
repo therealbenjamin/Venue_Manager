@@ -16,7 +16,14 @@ class Show
 		puts "A show for " + blue("#{artist}") + " has been added for " + blue("#{record[0][1]}") + "for the following date: " + red("#{showdate}.")
 	end
 
+	def all_shows
+		shows = db.connection.execute("SELECT * FROM shows INNER JOIN venues ON venues.id = shows.venue_id")
+		puts shows
+	end
 
+	def shows_by_venue
+
+	end
 
 
 end

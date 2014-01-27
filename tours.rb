@@ -12,7 +12,7 @@ require_relative 'lib/venue'
 require_relative 'lib/show'
 
 db = DB.new
-venues = db.pull_venues
+# venues = db.pull_venues
 
 header()
 intro()
@@ -73,5 +73,9 @@ when "new"
 
 	show = Show.new(artist: artist, showdate: showdate)
 	show.new_show(db, record)
+
+when "all_shows"
+	shows = db.connection.execute("SELECT * FROM shows INNER JOIN venues ON venues.id = shows.venue_id")
+	puts shows
 
 end
