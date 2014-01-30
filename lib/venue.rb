@@ -29,6 +29,7 @@ class Venue
 
 	def create db
 		geocode
+
 		db.connection.execute("INSERT INTO venues (name, address, city, state, latitude, longitude)
 		VALUES (?, ?, ?, ?, ?, ?)", [@name, @address, @city, @state, @latitude, @longitude])
 	end
@@ -44,7 +45,6 @@ class Venue
 		output << red(@latitude) + "\n"
 		output << red(@longitude) + "\n\n"
 		output
-	end
 
 	def update db
 		puts red("UPDATE a venue record:")
