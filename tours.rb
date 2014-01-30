@@ -50,8 +50,8 @@ when "distance"
 	puts "Enter the names of two venues to get the " + red("DISTANCE") + " between them:"
 	puts cyan("OPTION ONE").center(20)
 	name1 = pull_venue_name()
-
 	venue1 = Venue.find_by_name(name1, db)
+
 	puts cyan("OPTION TWO").center(20)
 	name2 = pull_venue_name()
 	venue2 = Venue.find_by_name(name2, db)

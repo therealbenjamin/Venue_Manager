@@ -45,6 +45,7 @@ class Venue
 		output << red(@latitude) + "\n"
 		output << red(@longitude) + "\n\n"
 		output
+	end
 
 	def update db
 		puts red("UPDATE a venue record:")
@@ -70,7 +71,7 @@ class Venue
 		new_latitude = coordinates[0]
 		new_longitude = coordinates[1]
 
-		db.connection.execute("UPDATE venues SET latitude = '#{new_latitude}', longitude = '#{new_longitude}'")
+		db.connection.execute("UPDATE venues SET latitude = '#{new_latitude}', longitude = '#{new_longitude}' WHERE(name = ?)", [new_name])
 
 		puts "Details have been successfully updated to:"
 		new_record = db.get_venue_by_name(new_name)
