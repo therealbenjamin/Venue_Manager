@@ -18,9 +18,7 @@ intro()
 
 argument = gets.chomp
 
-case argument
-
-when "add"
+if argument == "add"
 	name = pull_venue_name()
 	address = pull_venue_address()
 	city = pull_venue_city()
@@ -31,22 +29,18 @@ when "add"
 	venue.create(db)
 
 	venue_added(venue)
-
-when "view"
+elsif argument == "view"
 	name = pull_venue_name()
 	venue = Venue.find_by_name(name, db)
 	clear()
 	puts venue.display_full_record
-
-when "update"
+elsif argument == "update"
 	venue = Venue.new(name: name, address: address, city: city, state: state)
 	venue.update(db)
-
-when "kill"
+elsif argument == "kill"
 	venue = Venue.new(name: name, address: address, city: city, state: state)
 	venue.kill(db)
-
-when "distance"
+elsif argument == "distance"
 	puts "Enter the names of two venues to get the " + red("DISTANCE") + " between them:"
 	puts cyan("OPTION ONE").center(20)
 	name1 = pull_venue_name()
@@ -61,9 +55,7 @@ when "distance"
 	print black("These venues are ")
 	print red(distance)
 	print black(" miles apart. \n")
-
-when "new"
-
+elsif argument == "new"
 	puts "Enter the following details if you would like to add a " + red("SHOW.")
 	name = pull_venue_name
 	record = db.get_venue_by_name(name)
@@ -75,9 +67,17 @@ when "new"
 
 	show = Show.new(artist: artist, showdate: showdate)
 	show.new_show(db, record)
-
-when "all_shows"
-	shows = db.connection.execute("SELECT * FROM shows INNER JOIN venues ON venues.id = shows.venue_id")
+elsif argument == "all_shows"
+	shows = db.connection.execute("SELECT venues.name, shows.artist, shows.showdate FROM shows INNER JOIN venues ON venues.id = shows.venue_id")
+	puts
 	puts shows
-
+elsif argument == "shows_at"
+	puts red("Enter venue name:")
+	name = gets.chomp
+	shows = db.connection.execute("SELECT venues.name, shows.artist, shows.showdate FROM shows INNER JOIN venues ON venues.id = shows.venue_id WHERE name = ?", [name])
+	puts black("The following shows have been booked at the venue ") + red("#{name}") + black(":")
+	puts shows
+else
+	puts red("You have entered an INVALID COMMAND.")
 end
+

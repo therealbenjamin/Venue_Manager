@@ -18,16 +18,14 @@ def intro
 puts "Welcome to".center(65).rstrip + red(" VENUE MANAGER!")
 puts "Enter one of the following options to continue:".center(75)
 puts
-puts "Type 'view' to print a venue's details;".center(55)
-puts "Type 'add' to create a new venue;".center(50)
-puts "Type 'kill' to delete an existing venue;".center(57)
-puts "Type 'update' to revise a venue's details;".center(59)
-puts "Type 'new' to add a new show for a venue;".center(58)
-puts "Type 'all_shows' to display all shows in the database".center(70)
-puts "Type 'shows_at' to display shows booked at a venue;".center(67)
-puts "Type 'distance' to determine the distance between two venues;".center(78)
-puts "Type 'by_city' to print all shows in a given city;".center(67)
-puts "Type 'radius' to display all venues within a specified radius.".center(79)
+puts "- Type 'view' to print a venue's details;".center(55)
+puts "- Type 'add' to create a new venue;".center(50)
+puts "- Type 'kill' to delete an existing venue;".center(57)
+puts "- Type 'update' to revise a venue's details;".center(59)
+puts "- Type 'new' to add a new show for a venue;".center(58)
+puts "- Type 'all_shows' to display all shows in the database;".center(70)
+puts "- Type 'shows_at' to display shows booked at a venue;".center(67)
+puts "- Type 'distance' to determine the distance between two venues.".center(78)
 puts
 end
 
